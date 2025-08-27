@@ -3,10 +3,29 @@ services:
     name: starsbot
     env: php
     buildCommand: |
-      chmod +x build.sh
-      ./build.sh
+      # Create necessary directories
+      mkdir -p public_html/storage/logs
+      mkdir -p public_html/storage/cache
+      
+      # Install required PHP extensions
+      apt-get update && apt-get install -y \
+          php8.1 \
+          php8.1-common \
+          php8.1-curl \
+          php8.1-mbstring \
+          php8.1-pgsql \
+          php8.1-xml \
+          php8.1-zip
+          
+      # Install PostgreSQL client
+      apt-get install -y postgresql-client
+      
+      # Set permissions
+      chmod -R 755 public_html/storage
+      
     startCommand: >-
       php -S 0.0.0.0:10000 -t public_html
+      
     envVars:
       - key: RENDER
         value: 'true'
@@ -31,6 +50,7 @@ services:
     numInstances: 1
     healthCheckPath: /test.php
     autoDeploy: true
+    rootDir: .
 
   - type: postgres
     name: starsbot-db
