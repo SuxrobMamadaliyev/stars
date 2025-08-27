@@ -1,0 +1,41 @@
+services:
+  - type: web
+    name: starsbot
+    env: php
+    buildCommand: |
+      chmod +x build.sh
+      ./build.sh
+    startCommand: >-
+      php -S 0.0.0.0:10000 -t public_html
+    envVars:
+      - key: RENDER
+        value: 'true'
+      - key: PHP_VERSION
+        value: '8.1'
+      - key: APP_ENV
+        value: production
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+        required: true
+      - key: ADMIN_CHAT_ID
+        value: '5735723011'
+      - key: DATABASE_URL
+        fromDatabase:
+          name: starsbot-db
+          property: connectionString
+      - key: APP_DEBUG
+        value: 'false'
+      - key: APP_URL
+        generateValue: true
+    plan: free
+    numInstances: 1
+    healthCheckPath: /test.php
+    autoDeploy: true
+
+  - type: postgres
+    name: starsbot-db
+    plan: free
+    ipAllowList: []
+    databaseName: starsbot
+    user: starsbot_user
+    forceNew: true

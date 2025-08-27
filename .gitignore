@@ -1,0 +1,61 @@
+# Environment variables
+.env
+
+# Dependency directories
+/vendor/
+/node_modules/
+
+# Logs
+*.log
+/public_html/storage/logs/*
+!/public_html/storage/logs/.gitkeep
+
+# Cache
+/public_html/storage/cache/*
+!/public_html/storage/cache/.gitkeep
+
+# Editor directories and files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Local development files
+config.local.php
+
+# System files
+*.bak
+*.tmp
+*~
+
+# Ignore all files in the root except specific ones
+/*
+!/.gitignore
+!/render.yaml
+!/build.sh
+!/set_webhook.php
+!/public_html/
+*.njsproj
+*.sln
+*.sw?
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
