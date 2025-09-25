@@ -1,76 +1,59 @@
 services:
   - type: web
-    name: starsbot
-    env: php
-    build:
-      useBuildScript: true
-    buildCommand: |
-      #!/bin/bash
-      set -e  # Exit on error
-      
-      # Create necessary directories
-      mkdir -p public_html/storage/{logs,cache}
-      
-      # Update and install PHP with PostgreSQL support
-      apt-get update
-      apt-get install -y --no-install-recommends \
-          php8.1 \
-          php8.1-common \
-          php8.1-curl \
-          php8.1-mbstring \
-          php8.1-pgsql \
-          php8.1-xml \
-          php8.1-zip \
-          postgresql-client
-      
-      # Clean up to reduce image size
-      apt-get clean
-      rm -rf /var/lib/apt/lists/*
-      
-      # Set permissions
-      chmod -R 755 public_html/storage
-      
-      # Verify PHP is installed
-      php -v || echo "PHP installation failed"
-      
-      # Verify PostgreSQL client is installed
-      psql --version || echo "PostgreSQL client not found"
-      
-      echo "Build completed successfully"
-      
-    startCommand: >-
-      php -S 0.0.0.0:10000 -t public_html
-      
+    name: onerinchimijoz
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
     envVars:
-      - key: RENDER
-        value: 'true'
-      - key: PHP_VERSION
-        value: '8.1'
-      - key: APP_ENV
+      - key: NODE_ENV
         value: production
-      - key: TELEGRAM_BOT_TOKEN
-        sync: false
-        required: true
-      - key: ADMIN_CHAT_ID
-        value: '5735723011'
-      - key: DATABASE_URL
-        fromDatabase:
-          name: starsbot-db
-          property: connectionString
-      - key: APP_DEBUG
-        value: 'false'
-      - key: APP_URL
-        generateValue: true
+      - key: RENDER
+        value: "true"
+      - key: BOT_TOKEN
+        fromService:
+          name: onerinchimijoz
+          type: secret
+      - key: UZCARD_NUMBER
+        fromService:
+          name: onerinchimijoz
+          type: secret
+      - key: HUMO_NUMBER
+        fromService:
+          name: onerinchimijoz
+          type: secret
+      - key: ADMIN_ID1
+        fromService:
+          name: onerinchimijoz
+          type: secret
+      - key: ADMIN_ID2
+        fromService:
+          name: onerinchimijoz
+          type: secret
+      - key: CHANNEL_1_USERNAME
+        fromService:
+          name: onerinchimijoz
+          type: secret
+      - key: CHANNEL_1_LINK
+        fromService:
+          name: onerinchimijoz
+          type: secret
+      - key: CHANNEL_2_USERNAME
+        fromService:
+          name: onerinchimijoz
+          type: secret
+      - key: CHANNEL_2_LINK
+        fromService:
+          name: onerinchimijoz
+          type: secret
     plan: free
-    numInstances: 1
-    healthCheckPath: /test.php
     autoDeploy: true
-    rootDir: .
-
-  - type: postgres
-    name: starsbot-db
-    plan: free
-    ipAllowList: []
-    databaseName: starsbot
-    user: starsbot_user
-    forceNew: true
+          name: onerinchimijoz
+          type: secret
+      - key: CHANNEL_2_LINK
+        fromService:
+          name: onerinchimijoz
+          type: secret
+      - key: RENDER
+        value: "true"
+      - key: NODE_ENV
+        value: production
