@@ -1509,7 +1509,7 @@ async function sendAccountMenu(ctx) {
 }
 
 // --- Sozlamalar ---
-const UC_CHANNEL_URL = 'https://t.me/HOLYUCSERVIS';
+const UC_CHANNEL_URL = 'https://t.me/HOLY_KANAL';
 const ADMIN_USER = '@salee_uz';
 const ADMIN_IDS = [process.env.ADMIN_ID1, process.env.ADMIN_ID2].filter(Boolean).map(Number); // admin ID lari
 
