@@ -1510,7 +1510,7 @@ async function sendAccountMenu(ctx) {
 
 // --- Sozlamalar ---
 const UC_CHANNEL_URL = 'https://t.me/HOLYUCSERVIS';
-const ADMIN_USER = '@GStandGold_support';
+const ADMIN_USER = '@salee_uz';
 const ADMIN_IDS = [process.env.ADMIN_ID1, process.env.ADMIN_ID2].filter(Boolean).map(Number); // admin ID lari
 
 // Ensure ADMIN_IDS has valid values
@@ -1703,7 +1703,7 @@ bot.action(/admin_(confirm|cancel):(.+)/, async (ctx) => {
           `🆔 Buyurtma ID: ${order.id}\n` +
           `📦 Mahsulot: ${order.type === 'premium' ? `Telegram Premium ${order.amount} oy` : `${order.amount} Stars`}\n` +
           `💰 Narxi: ${order.price.toLocaleString()} so'm\n\n` +
-          `📞 Aloqa: @GStandGold_support`
+          `📞 Aloqa: @salee_uz`
         );
       } catch (error) {
         console.error('Error notifying user:', error);
@@ -1745,7 +1745,7 @@ bot.action(/admin_(confirm|cancel):(.+)/, async (ctx) => {
           `🆔 Buyurtma ID: ${order.id}\n` +
           `💰 ${order.price.toLocaleString()} so'm hisobingizga qaytarildi.\n\n` +
           `❓ Sabab: Admin tomonidan bekor qilindi\n` +
-          `📞 Aloqa: @GStandGold_support`
+          `📞 Aloqa: @salee_uz`
         );
       } catch (error) {
         console.error('Error notifying user:', error);
@@ -3442,7 +3442,7 @@ bot.action('topup:check_payment', async (ctx) => {
       `✅ To'lov so'rovingiz qabul qilindi.\n` +
       `💰 Summa: ${amount.toLocaleString()} so'm\n` +
       `🆔 Buyurtma ID: ${paymentId}\n\n` +
-      `📞 To'lov tez orada tasdiqlanadi. Agar uzoq vaqt kutib tursangiz, @GStandGold_support ga murojaat qiling.`,
+      `📞 To'lov tez orada tasdiqlanadi. Agar uzoq vaqt kutib tursangiz, @salee_uz ga murojaat qiling.`,
       [[Markup.button.callback('⬅️ Asosiy menyu', 'back:account')]]
     );
     
@@ -3505,7 +3505,7 @@ bot.action(/confirm_payment:(\w+):(\d+):(\d+)/, async (ctx) => {
         '💰 Summa: ' + escapeMarkdown(amount.toLocaleString()) + ' so\'m\n' +
         '💳 Yangi balans: ' + escapeMarkdown(userBalance.toLocaleString()) + ' so\'m\n' +
         '🆔 Buyurtma ID: `' + paymentId + '`\n\n' +
-        '📞 Murojaat uchun: @GStandGold_support';
+        '📞 Murojaat uchun: @salee_uz';
       
       console.log('Foydalanuvchiga yuborilayotgan xabar:', {
         userId,
@@ -3530,7 +3530,7 @@ bot.action(/confirm_payment:(\w+):(\d+):(\d+)/, async (ctx) => {
             '💰 Summa: ' + amount.toLocaleString() + ' so\'m\n' +
             '💳 Yangi balans: ' + userBalance.toLocaleString() + ' so\'m\n' +
             '🆔 Buyurtma ID: ' + paymentId + '\n\n' +
-            '📞 Murojaat uchun: @GStandGold_support';
+            '📞 Murojaat uchun: @salee_uz';
             
           await ctx.telegram.sendMessage(userId, simpleMessage);
           console.log('2-usul: Oddiy formatdagi xabar yuborildi');
@@ -3608,7 +3608,7 @@ bot.action(/reject_payment:(\w+):(\d+)/, async (ctx) => {
         '❌ *To\'lov rad etildi\!*\n\n' +
       '🆔 Buyurtma ID: `' + paymentId + '`\n' +
       '❌ Sabab: To\'lov ma\'lumotlari noto\'g\'ri yoki to\'lov amalga oshirilmagan\.\n\n' +
-      'ℹ️ Iltimos, to\'lovni qayta amalga oshiring yoki @GStandGold_support ga murojaat qiling\.',
+      'ℹ️ Iltimos, to\'lovni qayta amalga oshiring yoki @salee_uz ga murojaat qiling\.',
       { 
         parse_mode: 'MarkdownV2',
         reply_markup: {
@@ -3624,7 +3624,7 @@ bot.action(/reject_payment:(\w+):(\d+)/, async (ctx) => {
       try {
         await ctx.telegram.sendMessage(
           userId,
-          `❌ To'lov rad etildi! Iltimos, @GStandGold_support ga murojaat qiling.`,
+          `❌ To'lov rad etildi! Iltimos, @salee_uz ga murojaat qiling.`,
           { parse_mode: 'Markdown' }
         );
       } catch (e) {
@@ -3983,7 +3983,7 @@ bot.on('text', async (ctx, next) => {
       `💳 To'lov: ${price.toLocaleString()} so'm\n` +
       `💰 Joriy balans: ${userBalance.toLocaleString()} so'm\n\n` +
       `🆔 Buyurtma raqami: ${orderId}\n` +
-      `📞 Aloqa: @GStandGold_support\n\n` +
+      `📞 Aloqa: @salee_uz\n\n` +
       `💡 Iltimos, to'lovni tasdiqlash uchun adminlarimiz kuting.`;
     await ctx.reply(confirmText);
     
@@ -4577,7 +4577,7 @@ bot.action(/confirm_pubg:(\w+):(\d+)/, async (ctx) => {
       `💳 To'lov: *${price.toLocaleString()} so'm*\n` +
       `💰 Qolgan balans: *${(userBalance - price).toLocaleString()} so'm*\n\n` +
       `📦 Buyurtmangiz tez orada yetkazib beriladi.\n` +
-      `📞 Savollar bo'lsa: @GStandGold_support`,
+      `📞 Savollar bo'lsa: @salee_uz`,
       { parse_mode: 'Markdown' }
     );
     
@@ -4642,7 +4642,7 @@ bot.action(/reject_pubg:(\w+):(\d+)/, async (ctx) => {
         `💰 Summa: *${order.price.toLocaleString()} so'm*\n` +
         `⏰ Sana: ${new Date().toLocaleString()}\n\n` +
         `ℹ Sabab: Admin tomonidan bekor qilindi\n` +
-        `📞 Savollar bo'lsa: @GStandGold_support`,
+        `📞 Savollar bo'lsa: @salee_uz`,
         { parse_mode: 'Markdown' }
       );
     } catch (error) {
@@ -4952,7 +4952,7 @@ bot.on('text', async (ctx, next) => {
           `📦 Mahsulot: ${type === 'premium' ? `Telegram Premium ${amount} oy` : `${amount} Stars`}\n` +
           `👤 Foydalanuvchi: ${username}\n` +
           `💰 Narxi: ${price.toLocaleString()} so'm\n\n` +
-          `Ishonch xizmati: @GStandGold_support`);
+          `Ishonch xizmati: @salee_uz`);
         
         // Store the order information for admin confirmation
         const order = {
